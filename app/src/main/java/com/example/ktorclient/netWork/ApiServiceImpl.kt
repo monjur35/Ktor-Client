@@ -17,7 +17,7 @@ class ApiServiceImpl @Inject constructor(private val httpClient: HttpClient) : A
         return  try {
            Resource.Success( httpClient.get(ALL_CHARACTERS).body())
         }catch (e:Exception){
-            Resource.Failure(e)
+            Resource.Error(e)
         }
     }
 
