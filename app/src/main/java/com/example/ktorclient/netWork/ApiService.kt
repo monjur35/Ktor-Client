@@ -1,4 +1,8 @@
 package com.example.ktorclient.netWork
 
-class ApiService {
+import com.example.ktorclient.response.allCharacterResponse.AllCharacterResponse
+import com.example.ktorclient.utils.Resource
+
+interface ApiService {
+    suspend fun getAllCharacter(): Resource<AllCharacterResponse>
 }
