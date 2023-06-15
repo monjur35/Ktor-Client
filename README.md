@@ -1,2 +1,6 @@
-# Ktor-Client
-Implementation of Ktor Client side implementation in android application with kotlin,Dependency Injection ( Hilt )
+
+Implementation of :
+# Api call with Ktor Client
+# Dependency Injection with  Hilt 
+# MVVM Architecture
+
