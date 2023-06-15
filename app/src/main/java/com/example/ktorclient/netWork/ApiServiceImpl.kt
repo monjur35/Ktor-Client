@@ -14,7 +14,10 @@ class ApiServiceImpl @Inject constructor(private val httpClient: HttpClient) : A
 
 
     override suspend fun getAllCharacter(): Resource<AllCharacterResponse> {
+
+
         return  try {
+
            Resource.Success( httpClient.get(ALL_CHARACTERS).body())
         }catch (e:Exception){
             Resource.Error(e)

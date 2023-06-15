@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-      viewModel.getAllCharacters().observe(this){resource->
+   /*   viewModel.getAllCharacters().observe(this){resource->
           Log.e("TAG", "onCreate: $resource")
           when (resource) {
               is Resource.Loading -> {
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
                   // Handle other possible states or handle the null case
               }
           }
-        }
+        }*/
 
     }
 }

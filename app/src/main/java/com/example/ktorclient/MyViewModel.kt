@@ -17,7 +17,7 @@ import javax.inject.Inject
 class MyViewModel @Inject constructor(private val repository: Repository):ViewModel() {
 
     fun getAllCharacters(): MutableLiveData<Resource<AllCharacterResponse>?> {
-         val allCharacterResponse = MutableLiveData<Resource<AllCharacterResponse>?>(null)
+         val allCharacterResponse = MutableLiveData<Resource<AllCharacterResponse>?>(Resource.Loading)
         viewModelScope.launch {
             val response=repository.getAllCharacters()
             withContext(Dispatchers.Main){
