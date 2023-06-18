@@ -1,11 +1,18 @@
 package com.example.ktorclient.hilt
 
+import android.content.Context
 import android.util.Log
+import androidx.room.Room
+import com.example.ktorclient.dao.CharactersDao
+import com.example.ktorclient.dao.RemoteKeysDao
 import com.example.ktorclient.netWork.ApiService
 import com.example.ktorclient.netWork.ApiServiceImpl
+import com.example.ktorclient.response.allCharacterResponse.RemoteKeys
+import com.example.ktorclient.room.Database
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
@@ -20,6 +27,7 @@ import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
+import javax.inject.Singleton
 
 
 @Module
@@ -67,4 +75,21 @@ object AppModule {
     fun provideApiService(httpClient: HttpClient): ApiService {
         return ApiServiceImpl(httpClient)
     }
+
+
+    @Singleton
+    @Provides
+    fun provideRoomDatabase(@ApplicationContext context: Context):Database=
+        Room.databaseBuilder(context,Database::class.java,"character_DB")
+            .build()
+
+
+
+    @Singleton
+    @Provides
+    fun provideRemoteKeysDao(database: Database):RemoteKeysDao=database.getRemoteKeyDao()
+
+    @Singleton
+    @Provides
+    fun provideCharactersDao(database: Database):CharactersDao=database.getCharacterDao()
 }

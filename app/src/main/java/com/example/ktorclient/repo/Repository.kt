@@ -1,4 +1,4 @@
-package com.example.ktorclient
+package com.example.ktorclient.repo
 
 import com.example.ktorclient.netWork.ApiService
 import javax.inject.Inject
