@@ -67,7 +67,6 @@ class HomeFragment : Fragment() {
                     // Handle other possible states or handle the null case
                 }
             }
-
         }
     }
 
