@@ -3,6 +3,8 @@ package com.example.ktorclient.hilt
 import android.content.Context
 import android.util.Log
 import androidx.room.Room
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.ktorclient.dao.CharactersDao
 import com.example.ktorclient.dao.RemoteKeysDao
 import com.example.ktorclient.netWork.ApiService
@@ -43,8 +45,10 @@ object AppModule {
                 json(Json {
                     prettyPrint = true
                     isLenient = true
+                   ignoreUnknownKeys = true
                 })
             }
+
 
             install(Logging) {
                 logger = object : Logger {
@@ -81,7 +85,19 @@ object AppModule {
     @Provides
     fun provideRoomDatabase(@ApplicationContext context: Context):Database=
         Room.databaseBuilder(context,Database::class.java,"character_DB")
+            .addMigrations(migration1to2)
             .build()
+
+    private val migration1to2 = object : Migration(1, 2) {
+        override fun migrate(database: SupportSQLiteDatabase) {
+            database.execSQL("ALTER TABLE tblCharacters RENAME COLUMN origin_url TO origin_name")
+            database.execSQL("ALTER TABLE tblCharacters RENAME COLUMN location_url TO location_name")
+
+            // Add new columns
+            database.execSQL("ALTER TABLE tblCharacters ADD COLUMN page INTEGER DEFAULT 0")
+        }
+    }
+
 
 
 

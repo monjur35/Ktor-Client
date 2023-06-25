@@ -5,4 +5,6 @@ import com.example.ktorclient.utils.Resource
 
 interface ApiService {
     suspend fun getAllCharacter(): Resource<AllCharacterResponse>
+
+    suspend fun getPaginatedCharacter(page:Int):AllCharacterResponse
 }

@@ -1,6 +1,7 @@
 package com.example.ktorclient.fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.ktorclient.MyViewModel
-import com.example.ktorclient.RvAdapter
+import com.example.ktorclient.adapters.RvAdapter
 import com.example.ktorclient.databinding.FragmentHomeBinding
 import com.example.ktorclient.response.allCharacterResponse.Result
 import com.example.ktorclient.utils.Resource
@@ -59,6 +60,7 @@ class HomeFragment : Fragment() {
                     binding.progressBar.visibility=View.GONE
                     val errorMessage = resources.exception.message
                     Toast.makeText(requireContext(),"$errorMessage", Toast.LENGTH_SHORT).show()
+                    Log.e("TAG", "onViewCreated: $errorMessage")
                 }
                 else -> {
                     // Handle other possible states or handle the null case

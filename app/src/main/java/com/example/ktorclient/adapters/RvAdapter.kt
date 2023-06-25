@@ -1,4 +1,4 @@
-package com.example.ktorclient
+package com.example.ktorclient.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -3,11 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/homeFragmentPaginated">
 
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.ktorclient.fragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/homeFragmentPaginated"
+        android:name="com.example.ktorclient.HomeFragmentPaginated"
+        android:label="fragment_home_paginated"
+        tools:layout="@layout/fragment_home_paginated" />
 </navigation>

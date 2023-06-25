@@ -8,7 +8,7 @@ import com.example.ktorclient.dao.RemoteKeysDao
 import com.example.ktorclient.response.allCharacterResponse.RemoteKeys
 import com.example.ktorclient.response.allCharacterResponse.Result
 
-@Database(entities = [RemoteKeys::class,Result::class], version = 1)
+@Database(entities = [RemoteKeys::class,Result::class], version = 2)
 abstract class Database: RoomDatabase() {
     abstract fun getRemoteKeyDao():RemoteKeysDao
     abstract fun getCharacterDao():CharactersDao
